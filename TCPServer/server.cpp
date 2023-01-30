@@ -2,8 +2,7 @@
 
 server::server()
 {
-    if (this->listen(QHostAddress::Any, 502)) {// первый аргумент - слушать всех, второй указывает порт
-//        if (this->listen(QHostAddress::Any, 2323)) {// первый аргумент - слушать всех, второй указывает порт
+        if (this->listen(QHostAddress::Any, 2323)) {// первый аргумент - слушать всех, второй указывает порт
             qDebug()<<"start";
         } else {
             qDebug()<<"error";

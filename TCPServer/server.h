@@ -10,11 +10,11 @@ class server: public QTcpServer
 public:
     server();
     QTcpSocket *socket;
+    void SendToClient(QString str); // функция передачи данных клиенту
 
 private:
     QVector <QTcpSocket*> Sockets; // вектор хранения всех сокетов
     QByteArray Data;
-    void SendToClient(QString str); // функция передачи данных клиенту
     quint16 nextBlockSize = 0;
 public slots:
     void incomingConnection(qintptr socketDescriptor) override;
