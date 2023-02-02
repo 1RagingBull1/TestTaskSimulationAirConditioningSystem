@@ -19,6 +19,8 @@ private:
 public slots:
     void incomingConnection(qintptr socketDescriptor) override;
     void slotReadyRead();
+signals:
+    void SigReceivedMessage(QString str);
 };
 
 #endif // SERVER_H

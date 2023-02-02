@@ -19,5 +19,7 @@ public:
 private:
     Ui::MainWindow *ui;
     server* serverTCP;
+private slots:
+    void SlotSendTextBrowser(QString str);
 };
 #endif // MAINWINDOW_H

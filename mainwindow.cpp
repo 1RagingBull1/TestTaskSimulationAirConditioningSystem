@@ -7,11 +7,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     serverTCP = new server;
-
+    connect(serverTCP, &server::SigReceivedMessage, this, &MainWindow::SlotSendTextBrowser);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::SlotSendTextBrowser(QString str)
+{
+    this->ui->textBrowser->append(str);
 }
 

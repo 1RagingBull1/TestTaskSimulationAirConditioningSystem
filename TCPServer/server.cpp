@@ -66,6 +66,7 @@ void server::slotReadyRead()
             in>>str;
             nextBlockSize = 0;
             qDebug()<<str;
+            emit SigReceivedMessage(str);
             SendToClient(str);
             break;
         }
