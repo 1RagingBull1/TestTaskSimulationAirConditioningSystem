@@ -20,6 +20,6 @@ private:
     Ui::MainWindow *ui;
     server* serverTCP;
 private slots:
-    void SlotSendTextBrowser(QString str);
+    void SlotSendTextBrowser(QString str); // отправляет сообщение на управляющую программу
 };
 #endif // MAINWINDOW_H

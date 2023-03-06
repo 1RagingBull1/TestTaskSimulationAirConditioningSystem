@@ -12,14 +12,13 @@ server::server()
 void server::SendToClient(QString str)
 {
     Data.clear();
-    str += "server";
     QDataStream out(&Data, QIODevice::WriteOnly);
     out.setVersion(QDataStream::Qt_5_15);
-    out<< quint16(0); // записываем в первые два байта 0, чтобы зарезервировать место в кадре посылки
+//    out<< quint16(0); // записываем в первые два байта 0, чтобы зарезервировать место в кадре посылки
     out<<str; // отслыаемая строка прописывается через датастрим в битовый массив Data, для исключения искажений и реализоации независимости от платформы
 
-    out.device()->seek(0); // переходим на 0ую позицию в посылке, чтобы перезаписать размер посылки. Эти два байта зарезервирвовали выше
-    out<< quint16(Data.size() - sizeof(quint16));
+//    out.device()->seek(0); // переходим на 0ую позицию в посылке, чтобы перезаписать размер посылки. Эти два байта зарезервирвовали выше
+//    out<< quint16(Data.size() - sizeof(quint16));
     for (int i = 0; i < Sockets.size() ; i++ ) { // проходим по вектору и записываем в каждый клиент сообщение
         Sockets.at(i)->write(Data);
     }
@@ -67,7 +66,6 @@ void server::slotReadyRead()
             nextBlockSize = 0;
             qDebug()<<str;
             emit SigReceivedMessage(str);
-            SendToClient(str);
             break;
         }
     } else {

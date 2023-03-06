@@ -18,5 +18,7 @@ MainWindow::~MainWindow()
 void MainWindow::SlotSendTextBrowser(QString str)
 {
     this->ui->textBrowser->append(str);
+    serverTCP->SendToClient(str);
+
 }
 
